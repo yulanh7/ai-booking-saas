@@ -36,3 +36,23 @@ Content-Type: application/json
   "duration": 30,
   "price": 50
 }
+
+
+### ===========================
+### Single Service API
+### ===========================
+
+### Get single service (replace with real ID)
+GET http://localhost:3000/api/services/69671d569445608b279f753d
+
+### Update service (replace with real ID)
+PUT http://localhost:3000/api/services/69671d569445608b279f753d
+Content-Type: application/json
+
+{
+  "name": "30 Min Consultation - Updated",
+  "price": 60
+}
+
+### Delete service (replace with real ID)
+DELETE http://localhost:3000/api/services/69671d569445608b279f753d
