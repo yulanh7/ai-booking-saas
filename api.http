@@ -27,26 +27,11 @@ Content-Type: application/json
   "price": 100
 }
 
-### Create a service - invalid (missing name, should fail)
-POST http://localhost:3000/api/services
-Content-Type: application/json
+### Get single service (replace SERVICE_ID)
+GET http://localhost:3000/api/services/SERVICE_ID
 
-{
-  "description": "This should fail",
-  "duration": 30,
-  "price": 50
-}
-
-
-### ===========================
-### Single Service API
-### ===========================
-
-### Get single service (replace with real ID)
-GET http://localhost:3000/api/services/69671d569445608b279f753d
-
-### Update service (replace with real ID)
-PUT http://localhost:3000/api/services/69671d569445608b279f753d
+### Update service (replace SERVICE_ID)
+PUT http://localhost:3000/api/services/SERVICE_ID
 Content-Type: application/json
 
 {
@@ -54,5 +39,71 @@ Content-Type: application/json
   "price": 60
 }
 
-### Delete service (replace with real ID)
-DELETE http://localhost:3000/api/services/69671d569445608b279f753d
+### Delete service (replace SERVICE_ID)
+DELETE http://localhost:3000/api/services/SERVICE_ID
+
+### ===========================
+### User API (for testing, create user manually first)
+### ===========================
+
+### Create a test user (temporary - will use auth later)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get user profile (replace USER_ID)
+GET http://localhost:3000/api/users/USER_ID
+
+### Update user profile (replace USER_ID)
+PUT http://localhost:3000/api/users/USER_ID
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "phone": "0412345678"
+}
+
+### ===========================
+### Booking API
+### ===========================
+
+### Get all bookings
+GET http://localhost:3000/api/bookings
+
+### Get bookings by user (replace USER_ID)
+GET http://localhost:3000/api/bookings?userId=USER_ID
+
+### Get bookings by status
+GET http://localhost:3000/api/bookings?status=pending
+
+### Create a booking (replace USER_ID and SERVICE_ID)
+POST http://localhost:3000/api/bookings
+Content-Type: application/json
+
+{
+  "user": "USER_ID",
+  "service": "SERVICE_ID",
+  "date": "2025-01-20",
+  "startTime": "09:00",
+  "endTime": "09:30",
+  "notes": "First consultation"
+}
+
+### Get single booking (replace BOOKING_ID)
+GET http://localhost:3000/api/bookings/BOOKING_ID
+
+### Update booking status (replace BOOKING_ID)
+PUT http://localhost:3000/api/bookings/BOOKING_ID
+Content-Type: application/json
+
+{
+  "status": "confirmed"
+}
+
+### Delete booking (replace BOOKING_ID)
+DELETE http://localhost:3000/api/bookings/BOOKING_ID
