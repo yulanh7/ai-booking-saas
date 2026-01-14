@@ -1,0 +1,38 @@
+### ===========================
+### Service API
+### ===========================
+
+### Get all services
+GET http://localhost:3000/api/services
+
+### Create a service - 30 min consultation
+POST http://localhost:3000/api/services
+Content-Type: application/json
+
+{
+  "name": "30 Min Consultation",
+  "description": "Quick consultation session",
+  "duration": 30,
+  "price": 50
+}
+
+### Create a service - 60 min consultation
+POST http://localhost:3000/api/services
+Content-Type: application/json
+
+{
+  "name": "60 Min Deep Consultation",
+  "description": "In-depth consultation session",
+  "duration": 60,
+  "price": 100
+}
+
+### Create a service - invalid (missing name, should fail)
+POST http://localhost:3000/api/services
+Content-Type: application/json
+
+{
+  "description": "This should fail",
+  "duration": 30,
+  "price": 50
+}
